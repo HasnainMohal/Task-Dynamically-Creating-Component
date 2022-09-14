@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 col-sm-6">
+
+      <div style="font-weight: bold;">User Infromation</div>
+      <div  appFormFields [questions]="questions" [group]="form" ></div>
+
+    </div>
+    <div class="col-6 col-sm-6">
+      <pre>{{form.value|json}}</pre>
+      
+
+    </div>
+  </div>
+</div>

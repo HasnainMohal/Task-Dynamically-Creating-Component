@@ -1,0 +1,10 @@
+
+<div class="mb-3 row">
+  <label for="inputPassword" class="col-sm-2 col-form-label">{{label}}</label>
+  <div class="col-sm-10">
+    <select [formControl]="formControl"  class="form-select">
+      <option disabled hidden>-- Select a Country --</option>
+      <option *ngFor="let province of List" [value]="province.id" >{{province.name}}</option>
+    </select>
+   </div>
+</div>
