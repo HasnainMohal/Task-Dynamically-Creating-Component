@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms'
+import { DataServiceService } from '../app/Services/data-service.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,117 +9,13 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  questions: any=[
-    {
-      "key": "firstName",
-      "label": "Name",
-      "type": "text",
-      "value": "hasnain",
-      "required": true,
-      "order": 1
-    },
-    {
-      "key": "Faimly",
-      "label": "Faimly",
-      "type": "text",
-      "value": "Haydar",
-      "required": true,
-      "order": 2,
-    },
-  
-    {
-      "key": "Password",
-      "label": "Password",
-      "type": "password",
-      "value": "1234",
-      "required": true,
-      "order": 3
-    },
-    {
-      "key": "Email",
-      "label": "Email",
-      "type": "email",
-      "value": "29hasnain@gmail.com",
-      "required": true,
-      "order": 4
-    },
-   
-    {
-      "key": "Country",
-      "label": "Country",
-      "type": "dropdown",
-      "value": 1,
-      "required": true,
-      "options": [
-        {
-          "id": 1,
-          "name": "Pakistan"
-        },
-        {
-          "id": 2,
-          "name": "Dubai"
-        },
-        {
-          "id": 3,
-          "name": "UAE"
-        }
-      ],
-      "order": 6
-    },
-    {
-      "key": "rememberme",
-      "label": "Remember",
-      "type": "checkbox",
-      "value": true,
-      "order": 5
-    },
-    {
-      "key": "Gender",
-      "label": "Gender",
-      "type": "radio",
-      "value": "m",
-      "required": true,
-      "options": [
-        {
-          "key": "Male",
-          "value": "m"
-        },
-        {
-          "key": "Female",
-          "value": "f"
-        }
-      ],
-      "order": 6
-    },
-    {
-      "key": "adresssections",
-      "label": "Adress",
-      "type": "sections",
-      "value": "",
-      "order": 2,
-      sections:[
-        {
-          "key": "street",
-          "label": "Street",
-          "type": "text",
-          "value": "1",
-          "required": true,
-          "order": 2,
-        },{
-          "key": "House",
-          "label": "House",
-          "type": "text",
-          "value": "2",
-          "required": true,
-          "order": 2,
-        },
-
-      ]
-    },
-   
-    
-  ]
+  questions: any;
   form!: FormGroup;
+  DataService;
+  constructor(){
+    this.DataService=new DataServiceService();
+    this.questions= this.DataService.GetData();
+  }
   ngOnInit() {
     this.form! = this.toFormGroup(this.questions);
   }
