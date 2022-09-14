@@ -11,9 +11,7 @@ import { DataServiceService } from '../app/Services/data-service.service';
 export class AppComponent implements OnInit {
   questions: any;
   form!: FormGroup;
-  DataService;
-  constructor(){
-    this.DataService=new DataServiceService();
+  constructor(private DataService:DataServiceService){
     this.questions= this.DataService.GetData();
   }
   ngOnInit() {
