@@ -9,11 +9,11 @@ import { UntypedFormGroup } from '@angular/forms';
 export class CustomSectionsComponent implements OnInit {
   @Input() questions:any;
   @Input() group!:UntypedFormGroup;
+  @Input() sectionlabe:any; 
   constructor() { }
 
   ngOnInit(): void {
-    console.log("Question",this.questions);
-    console.log("Group",this.group);
+    console.log("Question",this.sectionlabe);
   }
 
 }

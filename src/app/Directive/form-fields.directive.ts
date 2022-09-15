@@ -43,25 +43,13 @@ export class FormFieldsDirective implements AfterViewInit {
       }
       if (type === "sections") {
 
-        var ref2 = this.vcRef.createComponent(CustomLableComponent);
-        ref2.instance.data = element.label;
+        
         const component = this.models[type];
         ref = this.vcRef.createComponent(component);
         ref.instance.questions = element.sections;
         ref.instance.group = this.group.get(element.key);
-        // this.vcRef.detach();
-        // var ref1: any;
-        // const type = section.type
-        // const component = this.models[type];
-        // const ref = this.vcRef.createComponent(component);
-        // ref.instance.type = section.type;
-        // ref.instance.label = section.label;
-        // ref.instance.formControl = this.group.get(element.key)?.get(section.key);
-        // if (type === "radio" || type === "dropdown") {
-        //   ref.instance.options = element.options;
-        // }
-
-
+        ref.instance.sectionlabe =element.label;
+        ref.changeDetectorRef.detectChanges();
       }
 
     });
