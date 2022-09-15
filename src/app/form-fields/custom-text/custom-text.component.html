@@ -6,3 +6,12 @@
       <input  *ngIf="type==='number'" [formControl]="formControl" type="number" class="form-control" id="inputPassword">
     </div>
   </div>
+  <div *ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
+    class="">
+
+  <div *ngIf="formControl.errors?.['required']">
+    <div style="color:red ; margin-bottom: 2px;" class="mb-3 row">
+{{label}} is required.
+  </div>
+  </div>
+  </div>

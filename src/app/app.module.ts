@@ -10,10 +10,11 @@ import { CustomRadioComponent } from './form-fields/custom-radio/custom-radio.co
 import { FormFieldsDirective } from './Directive/form-fields.directive';
 import { CustomLableComponent } from './form-fields/custom-lable/custom-lable.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustomSectionsComponent } from './form-fields/custom-sections/custom-sections.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,ReactiveFormsModule, NgbModule],
-  declarations: [ AppComponent, CustomSelectComponent,CustomTextComponent, CustomCheckboxComponent, CustomRadioComponent, FormFieldsDirective, CustomLableComponent],
+  declarations: [ AppComponent, CustomSelectComponent,CustomTextComponent, CustomCheckboxComponent, CustomRadioComponent, FormFieldsDirective, CustomLableComponent, CustomSectionsComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

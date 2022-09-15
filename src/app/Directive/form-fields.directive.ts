@@ -5,6 +5,7 @@ import { CustomRadioComponent } from '../form-fields/custom-radio/custom-radio.c
 import { CustomSelectComponent } from '../form-fields/custom-select/custom-select.component';
 import { CustomTextComponent } from '../form-fields/custom-text/custom-text.component';
 import { CustomLableComponent } from '../form-fields/custom-lable/custom-lable.component';
+import { CustomSectionsComponent } from '../form-fields/custom-sections/custom-sections.component';
 @Directive({
   selector: '[appFormFields]'
 })
@@ -16,6 +17,7 @@ export class FormFieldsDirective implements AfterViewInit {
     checkbox: CustomCheckboxComponent,
     dropdown: CustomSelectComponent,
     radio: CustomRadioComponent,
+    sections: CustomSectionsComponent
 
   }
   constructor(private vcRef: ViewContainerRef) {
@@ -27,7 +29,7 @@ export class FormFieldsDirective implements AfterViewInit {
       const type = element.type;
       var ref: any;
       if (type !== "sections") {
-        
+
         const component = this.models[type];
         ref = this.vcRef.createComponent(component);
         ref.instance.type = element.type;
@@ -40,23 +42,25 @@ export class FormFieldsDirective implements AfterViewInit {
         ref.instance.options = element.options;
       }
       if (type === "sections") {
+
         var ref2 = this.vcRef.createComponent(CustomLableComponent);
-          ref2.instance.data = element.label;
+        ref2.instance.data = element.label;
+        const component = this.models[type];
+        ref = this.vcRef.createComponent(component);
+        ref.instance.questions = element.sections;
+        ref.instance.group = this.group.get(element.key);
+        // this.vcRef.detach();
+        // var ref1: any;
+        // const type = section.type
+        // const component = this.models[type];
+        // const ref = this.vcRef.createComponent(component);
+        // ref.instance.type = section.type;
+        // ref.instance.label = section.label;
+        // ref.instance.formControl = this.group.get(element.key)?.get(section.key);
+        // if (type === "radio" || type === "dropdown") {
+        //   ref.instance.options = element.options;
+        // }
 
-        element.sections.forEach((section: any) => {
-          var ref1: any;
-          const type = section.type
-          const component = this.models[type];
-          const ref = this.vcRef.createComponent(component);
-          ref.instance.type = section.type;
-          ref.instance.label = section.label;
-          ref.instance.formControl = this.group.get(element.key)?.get(section.key);
-          if (type === "radio" || type === "dropdown") {
-            ref.instance.options = element.options;
-          }
-
-
-        });
 
       }
 
@@ -69,8 +73,6 @@ export class FormFieldsDirective implements AfterViewInit {
   @Input()
   group!: UntypedFormGroup;
   ngOnInit(): void {
-
-    console.log(this.questions)
   }
 
 }

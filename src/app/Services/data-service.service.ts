@@ -102,7 +102,7 @@ export class DataServiceService {
             "label": "Street",
             "type": "text",
             "value": "1",
-            "required": true,
+         
             "order": 2,
           },{
             "key": "House",
